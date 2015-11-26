@@ -1,16 +1,14 @@
-var assert = require('assert');
-var redux = require('redux');
-var createStore = redux.createStore;
+import assert from 'assert';
+import { createStore } from 'redux';
 
-var reducer = function(state, action) {
-  if (!state) state = 0;
+const reducer = (state = 0, action) => {
   if (action.type === 'INC') return state + 1;
   return state;
 }
 
-var store = createStore(reducer);
+const store = createStore(reducer);
 
-assert.equal(store.getState(), 0)
+assert.equal(store.getState(), 0);
 
 store.dispatch({type: 'INC'});
 
