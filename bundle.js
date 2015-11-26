@@ -1,26 +1,35 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 (function (global){
-var assert = require('assert');
-var redux = require('redux');
-var createStore = redux.createStore;
+'use strict';
 
-var reducer = function(state, action) {
-  if (!state) state = 0;
+var _assert = require('assert');
+
+var _assert2 = _interopRequireDefault(_assert);
+
+var _redux = require('redux');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var reducer = function reducer() {
+  var state = arguments.length <= 0 || arguments[0] === undefined ? 0 : arguments[0];
+  var action = arguments[1];
+
   if (action.type === 'INC') return state + 1;
   return state;
-}
+};
 
-var store = createStore(reducer);
+var store = (0, _redux.createStore)(reducer);
 
-assert.equal(store.getState(), 0)
+_assert2.default.equal(store.getState(), 0);
 
-store.dispatch({type: 'INC'});
+store.dispatch({ type: 'INC' });
 
-assert.equal(store.getState(), 1);
+_assert2.default.equal(store.getState(), 1);
 
 if (global.document) {
   document.write('My number is ' + store.getState());
 }
+
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"assert":2,"redux":8}],2:[function(require,module,exports){
 // http://wiki.commonjs.org/wiki/Unit_Testing/1.0
